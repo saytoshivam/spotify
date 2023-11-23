@@ -9,7 +9,7 @@ function connectToMongo() {
 
   // MongoDB connection string with URL encoding for the password
   const connectionString = `mongodb+srv://${process.env.MONGO_USERNAME}:${encodeURIComponent(process.env.MONGO_PASSWORD)}@cluster0.hf21akx.mongodb.net/?retryWrites=true&w=majority`;
-
+  
   // Use an options object to set useNewUrlParser and useUnifiedTopology
   const options = {
     useNewUrlParser: true,
