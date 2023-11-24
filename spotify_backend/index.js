@@ -6,6 +6,9 @@ const passport = require("passport");
 const User = require("./model/User");
 const authRoutes = require("./routes/auth");
 const { connectToMongo } = require('./extensions/dbExtention');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
+const bodyParser = require('body-parser');
 
 // Connect to MongoDB
 const PORT = 8000;
@@ -35,10 +38,9 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
         }
     });
 }));
-app.use(express.json());
+//app.use(express.json());
+app.use(bodyParser.json())
 
-app.get("/", (req, res) => {
-    res.send("hello yogita");
-});
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use("/auth",authRoutes);
