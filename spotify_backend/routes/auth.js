@@ -22,5 +22,10 @@ router.post("/register",async (req,res)=>{
     delete userToReturn.password;
     return res.status(200).send(userToReturn);
 });
+router.get("/getUsers",async (req,res) => {
+    const currentuser = req.user;
+    const users = await User.findAll();
+    return res.status(200).json({data : users});
+});
 
 module.exports = router;

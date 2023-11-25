@@ -50,6 +50,16 @@
         }
       }
     },
+    "/auth/getUsers": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/song/create": {
       "post": {
         "description": "",
@@ -79,6 +89,16 @@
           },
           "301": {
             "description": "Moved Permanently"
+          }
+        }
+      }
+    },
+    "/song/get/mysongs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }

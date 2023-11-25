@@ -10,6 +10,7 @@ const { connectToMongo } = require('./extensions/dbExtention');
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Connect to MongoDB
 const PORT = 8000;
@@ -41,6 +42,8 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
 }));
 //app.use(express.json());
 app.use(bodyParser.json())
+
+app.use(cors());
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
