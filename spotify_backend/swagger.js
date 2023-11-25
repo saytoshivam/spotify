@@ -2,8 +2,8 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'My API',
-    description: 'Description'
+    title: 'Spotify',
+    description: 'Spotify backend api by yogita rathod'
   },
   host: 'localhost:8000'
 };

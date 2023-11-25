@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Description",
+    "title": "Spotify",
+    "description": "Spotify backend api by yogita rathod",
     "version": "1.0.0"
   },
   "host": "localhost:8000",
