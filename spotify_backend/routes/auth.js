@@ -18,9 +18,13 @@ router.post("/register",async (req,res)=>{
     const newUser = await User.create(newUserData);
     const token = await getToken(email,newUser);
 
-    const userToReturn = {...newUser.toJSON(),token};
+    const userToReturn = {...newUser.toJSON(),"token":token};
     delete userToReturn.password;
     return res.status(200).send(userToReturn);
+});
+router.get("/getUsers",async (req,res) => {
+    const users = await User.find({});
+    return res.status(200).json({data : users} );
 });
 
 module.exports = router;

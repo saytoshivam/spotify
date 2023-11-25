@@ -7,6 +7,7 @@ exports.getToken = async (email,user)=>{
         {identifier:user._id},
         process.env.SECRET_KEY
         );
+        return token;
 };
 
 module.exports = exports;
