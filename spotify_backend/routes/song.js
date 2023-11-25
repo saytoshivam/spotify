@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const Song = require("../models/song");
+const Song = require("../model/Song");
 
-router.post(
-    "/create",passport.authenticate("jwt",{session : false }),
-async(req,res) =>{
+router.post("/create", async (req,res) =>{
     const {name, thumbnail, track} = req.body;
     if(!name || !thumbnail || !track){
         return res
@@ -17,15 +15,13 @@ async(req,res) =>{
     const createSong = await Song.create(songDetails);
     return res.status(200).json(createSong);
 
-};
-router.get{
-    "/get/mysongs",
-    passport.authenticate("jwt",{session : false}),
-    async(req,res) => {
+});
+router.get("/get/mysongs",async (req,res) => {
         const currentuser = req.user;
         const songs = await Song.find({artist : req.user._id});
         return res.status(200).json({data : songs});
-    }
-};
+});
 
 module.exports = router;
+
+//passport.authenticate("jwt",{session : false})

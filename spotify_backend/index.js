@@ -5,6 +5,7 @@ const app = express();//express specific syntax for using express
 const passport = require("passport");
 const User = require("./model/User");
 const authRoutes = require("./routes/auth");
+const songRoutes = require("./routes/song");
 const { connectToMongo } = require('./extensions/dbExtention');
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
@@ -44,3 +45,5 @@ app.use(bodyParser.json())
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use("/auth",authRoutes);
+
+app.use("/song",songRoutes);
