@@ -32,6 +32,15 @@ router.get("/get/artist",async (req,res) =>{
         return res.status(200).json({data : songs});
     });
 
+    router.get("/get/songname",async (req,res) =>{
+        const {songname} = req.body;
+        const songs = await user.find({ name:songname });
+        if(!songs){
+            return res.status(301).json({err : "song does not exist"});
+        }
+        return res.status(200).json({data : songs});
+    });
+
 module.exports = router;
 
 //passport.authenticate("jwt",{session : false})
