@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const Song = require("../model/Song");
-const user = require("../models/user");
+const User = require("../model/User");
 
 router.post("/create", async (req,res) =>{
     const {name, thumbnail, track} = req.body;
@@ -24,7 +24,7 @@ router.get("/get/mysongs",async (req,res) => {
 });
 router.get("/get/artist",async (req,res) =>{
         const {artistId} = req.body;
-        const artist = await user.find({_id : artistId});
+        const artist = await User.find({_id : artistId});
         if(!artist){
             return res.status(301).json({err : "artist does not exist"});
         }
@@ -34,7 +34,7 @@ router.get("/get/artist",async (req,res) =>{
 
     router.get("/get/songname",async (req,res) =>{
         const {songname} = req.body;
-        const songs = await user.find({ name:songname });
+        const songs = await User.find({ name:songname });
         if(!songs){
             return res.status(301).json({err : "song does not exist"});
         }

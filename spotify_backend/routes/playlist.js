@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const Playlist = require("../model/Playlist");
-const User = require("../models/user");
+const User = require("../model/User");
 const Song = require("../model/Song");
 
 router.post("/create", async (req, res) => {
