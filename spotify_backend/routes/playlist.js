@@ -38,7 +38,7 @@ router.get("/get/playlist/:playlistId", async (req, res) => {
 router.get("/get/artist/:artistId", async (req, res) => {
     const artistId = req.params.artistId;
 
-    const artist = await UserActivation.findOne({ _id: artistId });
+    const artist = await User.findOne({ _id: artistId });
     if (!artist) {
         return res.status(304).json({ err: "Invalid ArtistId" });
     }
@@ -55,7 +55,8 @@ router.post("/add/song", async (req, res) => {
         return res.status(304).json({ err: "Playlist doesnot exist" });
     }
 
-    if (playlist.owner != currentUser._id && !playlist.collaborators.includes(currentUser._id)) {
+    //equal method compare values , objects should not be compared with ==, as it compares address
+    if (!playlist.owner.equals(currentUser._id) && !playlist.collaborators.includes(currentUser._id)) {
         return res.status(400).json({ err: "Not allowed" });
     }
 
