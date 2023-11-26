@@ -6,6 +6,7 @@ const passport = require("passport");
 const User = require("./model/User");
 const authRoutes = require("./routes/auth");
 const songRoutes = require("./routes/song");
+const playlistRoutes = require("./routes/playlist");
 const { connectToMongo } = require('./extensions/dbExtention');
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
@@ -52,3 +53,5 @@ app.use(cors());
 app.use("/auth",authRoutes);
 
 app.use("/song",songRoutes);
+
+app.use("/playlist",playlistRoutes);
