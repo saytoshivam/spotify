@@ -46,9 +46,9 @@ app.use(bodyParser.json())
 
 app.use(cors());
 
-/*app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile),(req, res) => {
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile),(req, res) => {
   res.setHeader('Content-Type', 'application/json');
-});*/
+});
 
 app.use("/auth",authRoutes);
 
